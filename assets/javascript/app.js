@@ -1,6 +1,8 @@
 
 let start_over=false
 let result
+let image_gif
+let gif_url
 let question_num
 let count=0
 let question_timer
@@ -23,8 +25,9 @@ fetch('https://opentdb.com/api.php?amount=10&category=21&difficulty=easy')
 
 fetch('https://api.giphy.com/v1/gifs/search?api_key=uVTFWMayMvW3ZfWrR3lmZvh1hANziKFs&q=fun&limit=25&offset=0&rating=G&lang=en')
 .then(r=>r.json())
-.then((r)=>{
-    console.log(r)
+.then(({data})=>{
+    image_gif=data
+    console.log(image_gif)
 })
 .catch(e=>{console.error(e)})
 
@@ -44,32 +47,30 @@ document.addEventListener('click',({target})=>{
     }
 })
 question_timer=setInterval(_=>{
-    console.log(timer_enable)
 
     if(timer_enable)
         {
-            console.log("raftim too timer")
             if(second===30){
-                console.log("timeout")
                 notanswered++
-                display_message("Time out")
+                gif_url=image_gif[0].embed_url
+                display_message("Time out",gif_url)
             }
             else if(option_chosen)
             {
                 if(option===result[count].correct_answer)
-                { display_message("Correct")
+                {
+                gif_url=image_gif[1].embed_url
+                display_message("Correct",gif_url)
                 correct++
-                console.log("correct")
 
                 }
                 else{
-                    console.log("Nope")
-                    display_message("Nope")
+                    gif_url=image_gif[2].embed_url
+                    display_message("Nope",gif_url)
                     wrong++
                 }
             }
             else{
-                console.log("going on")
                 second++
                 dispaly_timer()
             }
@@ -115,7 +116,7 @@ question_timer=setInterval(_=>{
  
  
  
- const display_message=(message)=>{
+ const display_message=(message,uurrll)=>{
      timer_enable=false
     document.querySelector(".white_page").innerHTML=``;
     document.querySelector(".white_page").innerHTML=`  <h1 class="title">Sport Trivia!</h1>
@@ -124,6 +125,11 @@ question_timer=setInterval(_=>{
     question_div.className="question_class"
     question_div.textContent=`${message}!\n the correct answer was ${result[count].correct_answer}`
     document.querySelector(".white_page").append(question_div)
+    imggif=document.createElement('img')
+    console.log(uurrll)
+    imggif.src=("url",uurrll)
+    document.querySelector(".white_page").append(imggif)
+
     setTimeout(_=>{
         count++
         second=0
