@@ -1,0 +1,77 @@
+.container{
+    background-image: url("../images/trivia_background.jpg");
+    width: 100vw;
+    height: 100vh;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    display: grid;
+    grid-template-rows: 1fr 5fr 1fr;
+    grid-template-columns: 1fr 5fr 1fr;
+   
+}
+.white_page{
+    grid-row: 2 /span 1;
+    grid-column: 2 /span 1;
+    width: 100%;
+    height: 100%;
+    background-color: white; 
+    border: 3px solid grey;
+}
+.title{
+    color: black;
+    text-align: center;
+    font-size: 60px;
+}
+.start_button{
+    margin-left: 30%;
+    margin-top: 30%;
+    width: 300px;
+    height: 100px;
+    
+}
+.start_button:hover{
+    background-color: aquamarine;
+}
+.timer_class{
+    color: black;
+    text-align: center;
+    font-size: 40px;
+}
+.question_class{
+    color: black;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 10%;
+}
+.a_class{
+    color: black;
+    text-align: center;
+    font-size: 30px;
+}
+.a_class:hover{
+    background-color: aqua;
+}
+.b_class{
+    color: black;
+    text-align: center;
+    font-size: 30px;
+}
+.b_class:hover{
+    background-color: aqua;
+}
+.c_class{
+    color: black;
+    text-align: center;
+    font-size: 30px;
+}
+.c_class:hover{
+    background-color: aqua;
+}
+.d_class{
+    color: black;
+    text-align: center;
+    font-size: 30px;
+}
+.d_class:hover{
+    background-color: aqua;
+}
